@@ -1,0 +1,19 @@
+name: SQL Standards Check
+
+on:
+  pull_request:
+    paths:
+      - '**.sql'
+
+jobs:
+  sqlfluff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run SQLFluff
+        uses: sqlfluff/sqlfluff-github-actions@v3.5.0
+        with:
+          paths: '.'
+          config: '.sqlfluff'
