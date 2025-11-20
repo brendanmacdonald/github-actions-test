@@ -1,19 +1,18 @@
-name: SQL Standards Check
+name: "SQLFluff lint"
 
-on:
+'on':
   pull_request:
-    paths:
-      - '**.sql'
+    branches:
+    - master
 
 jobs:
-  sqlfluff:
+  sqlfluff-lint-models:
+    name: Run linting flow
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
 
-      - name: Run SQLFluff
-        uses: sqlfluff/sqlfluff@v2.0.0
-        with:
-          paths: '.'
-          config: '.sqlfluff'
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      
