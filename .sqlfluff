@@ -3,4 +3,4 @@
 dialect = sparksql
 
 [sqlfluff:rules]
-capitalisation.keywords = lower
+capitalisation_policy = lower
