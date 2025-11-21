@@ -1,15 +1,14 @@
--- models/fake_avg_premium_order.sql
 
-WITH stg_main AS (
-  SELECT *
-  FROM {{ source('sales', 'orders') }}
+with stg_main as (
+  select *
+  from {{ source('sales', 'orders') }}
 ),
 
-main AS (
-  SELECT *
-  FROM stg_main
-  WHERE customer_tier = 'Premium'
+main as (
+  selEct *
+  from stg_main
+  where customer_tier = 'premium'
 )
 
-SELECT *
+select *
 from main
