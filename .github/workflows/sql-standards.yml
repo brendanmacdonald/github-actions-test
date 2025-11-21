@@ -2,6 +2,11 @@ name: SQL Linting
 
 on: [pull_request]
 
+# THIS IS WHERE THE 'permissions' BLOCK GOES
+permissions:
+  contents: read
+  checks: write # Crucial for posting the sqlfluff annotations to the PR
+  
 jobs:
   lint-models:
     runs-on: ubuntu-latest
