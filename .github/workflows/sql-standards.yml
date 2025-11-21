@@ -1,19 +1,24 @@
-name: SQL Standards Check
+name: SQL Linting
 
-on:
-  pull_request:
-    paths:
-      - '**.sql'
+on: [pull_request]
+
+# THIS IS WHERE THE 'permissions' BLOCK GOES
+# permissions:
+#   contents: read
+#   checks: write # Crucial for posting the sqlfluff annotations to the PR
 
 jobs:
-  sqlfluff:
+  lint-models:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: "actions/checkout@v4"
+      # - uses: "actions/setup-python@v4"
+      #   with:
+      #       python-version: "3.8"
+      - name: Install SQLFluff
+        run: "pip install sqlfluff==3.0"
+      - name: Lint models
+        run: "sqlfluff lint --format github-annotation-native models"
 
-      - name: Run SQLFluff
-        uses: sqlfluff/sqlfluff-github-actions@v3.5.0
-        with:
-          paths: '.'
-          config: '.sqlfluff'
+
+#py -m sqlfluff lint models

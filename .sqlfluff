@@ -1,6 +1,0 @@
-[sqlfluff]
-
-dialect = sparksql
-
-[sqlfluff:rules]
-capitalisation.keywords = lower
